@@ -1,0 +1,7 @@
+# ninja log v6
+4	154	1730121616986364386	CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o	f3a0c00924efdfa7
+3	155	1730121616985617125	CMakeFiles/Integration_Calculator.dir/main.c.o	2f8501fdda2bcef
+4	155	1730121616986820810	CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o	fa773e186ed6e9ff
+4	156	1730121616986981896	CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o	c0c696534788fee4
+4	155	1730121616986577640	CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o	b927b62b1e80fbc0
+156	248	1730121617138293975	Integration_Calculator	3c4c8968f7874dcf

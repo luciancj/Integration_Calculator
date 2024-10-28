@@ -1,0 +1,3 @@
+/Users/luciancojocaru/Desktop/Integration Calculator/cmake-build-debug-coverage/CMakeFiles/Integration_Calculator.dir
+/Users/luciancojocaru/Desktop/Integration Calculator/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+/Users/luciancojocaru/Desktop/Integration Calculator/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir

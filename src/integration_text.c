@@ -18,7 +18,7 @@ const char *regula_falsi[] = {
         "     ┛              "
         ANSI_COLOR_RESET
 };
-struct textRows printRegulaFalsi = {regula_falsi, 4};
+struct textRows bannerRegulaFalsi = {regula_falsi, 4};
 
 const char *right_riemann_sum[] = {
         ANSI_COLOR_GREEN
@@ -28,7 +28,7 @@ const char *right_riemann_sum[] = {
         "             ┛"
         ANSI_COLOR_RESET
 };
-struct textRows printRightRiemannSum = {right_riemann_sum, 3};
+struct textRows bannerRightRiemannSum = {right_riemann_sum, 3};
 
 const char *left_riemann_sum[] = {
         ANSI_COLOR_GREEN
@@ -37,7 +37,7 @@ const char *left_riemann_sum[] = {
         " ┻ ┛┗┗   ┗┛┗ ┛┗  ┛┗┗┗ ┛┗┗┗┻┛┗┛┗  ┗┛┗┻┛┗┗"
         ANSI_COLOR_RESET
 };
-struct textRows printLeftRiemannSum = {left_riemann_sum, 3};
+struct textRows bannerLeftRiemannSum = {left_riemann_sum, 3};
 
 const char *midpoint_riemann_sum[] = {
         ANSI_COLOR_GREEN
@@ -46,7 +46,7 @@ const char *midpoint_riemann_sum[] = {
         " ┻ ┛┗┗   ┛ ┗┗┗┻┣┛┗┛┗┛┗┗  ┛┗┗┗ ┛┗┗┗┻┛┗┛┗  ┗┛┗┻┛┗┗"
         ANSI_COLOR_RESET
 };
-struct textRows printMidpointRiemannSum = {midpoint_riemann_sum, 4};
+struct textRows bannerMidpointRiemannSum = {midpoint_riemann_sum, 4};
 
 const char *trapezoidal_rule[] = {
         ANSI_COLOR_GREEN
@@ -56,7 +56,7 @@ const char *trapezoidal_rule[] = {
         "       ┛"
         ANSI_COLOR_RESET
 };
-struct textRows printTrapezoidalRule = {trapezoidal_rule, 4};
+struct textRows bannerTrapezoidalRule = {trapezoidal_rule, 4};
 
 const char *secant_method[] = {
         ANSI_COLOR_GREEN
@@ -65,4 +65,4 @@ const char *secant_method[] = {
         "┗┛┗ ┗┗┻┛┗┗  ┛ ┗┗ ┗┛┗┗┛┗┻"
         ANSI_COLOR_RESET
 };
-struct textRows printSecantMethod = {secant_method, 3};
+struct textRows bannerSecantMethod = {secant_method, 3};

@@ -1,13 +1,8 @@
 # ninja log v6
-4	196	1730116956664365786	CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o	98647f585ebdcc10
-4	193	1730116956664072873	CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o	f988d39cf4ba37c9
-3	194	1730116956663431090	CMakeFiles/Integration_Calculator.dir/main.c.o	a6600d2aff1ddaa
-4	194	1730116956664231288	CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o	aae433b25719112f
-3	64	1730118052048858072	build.ninja	26da129505a5109d
-196	314	1730116956856165637	Integration_Calculator	7901e9086706470
-2	79	1730118754841343572	CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o	f988d39cf4ba37c9
-3	79	1730118754841528362	CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o	aae433b25719112f
-3	81	1730118754842212315	CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o	2175db2909b86beb
-2	81	1730118754840719452	CMakeFiles/Integration_Calculator.dir/main.c.o	a6600d2aff1ddaa
 3	82	1730118754841688028	CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o	98647f585ebdcc10
+2	79	1730118754841343572	CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o	f988d39cf4ba37c9
+2	81	1730118754840719452	CMakeFiles/Integration_Calculator.dir/main.c.o	a6600d2aff1ddaa
+3	79	1730118754841528362	CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o	aae433b25719112f
+3	64	1730122553338229075	build.ninja	26da129505a5109d
 82	176	1730118754920870753	Integration_Calculator	e1ff8b196ac65c9e
+3	81	1730118754842212315	CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o	2175db2909b86beb

@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.30"
+						"string" : "3.10"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Integration_Calculator::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Integration_Calculator-Debug-ab3bee638acd61936bec.json",
+					"jsonFile" : "target-Integration_Calculator-Debug-e891fb9b2f81187cf64e.json",
 					"name" : "Integration_Calculator",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/luciancojocaru/Desktop/Integration Calculator/cmake-build-debug",
+		"build" : "/Users/luciancojocaru/Desktop/Integration Calculator/cmake-build-debug-coverage",
 		"source" : "/Users/luciancojocaru/Desktop/Integration Calculator"
 	},
 	"version" : 

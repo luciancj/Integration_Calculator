@@ -1,15 +1,14 @@
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.10)  # 3.10 is sufficient for most setups
 project(Integration_Calculator)
 
-set(CMAKE_CXX_STANDARD 26)
+# Set C standard to C11 (change if using a different standard)
+set(CMAKE_C_STANDARD 11)
 
-add_executable(Integration_Calculator main.c
-        include/text_utils.h
-        src/menu_text.c
-        include/menu_text.h
-        src/integration_text.c
-        include/integration_text.h
-        src/menu_manager.c
-        include/menu_manager.h
-        src/text_utils.c
-)
+# Specify include directories
+include_directories(include)
+
+# Gather source files (only .c files)
+file(GLOB SOURCES "src/*.c")
+
+# Define the executable with gathered sources
+add_executable(Integration_Calculator main.c ${SOURCES})
