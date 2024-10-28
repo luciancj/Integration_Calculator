@@ -1,4 +1,4 @@
-#include "../include/text_data.h"
+#include "../include/text_utils.h"
 
 const char *menu[] = {
         "╔══════════════════════════════════════╗",
@@ -11,9 +11,9 @@ const char *menu[] = {
         "║                                      ║",
         "╚══════════════════════════════════════╝"
 };
-struct TextData userMenu = {menu, 9};
+struct textRows welcomeMenu = {menu, 9};
 
-const char *parameter_mode[] = {
+const char *parameter_mode_banner[] = {
         "╔══════════════════════════════════════╗",
         "║        Parameter mode - Choose:      ║",
         "╠══════════════════════════════════════╣",
@@ -27,9 +27,9 @@ const char *parameter_mode[] = {
         "║                                      ║",
         "╚══════════════════════════════════════╝"
 };
-struct TextData parameterMode = {parameter_mode, 12};
+struct textRows parameterModeBanner = {parameter_mode_banner, 12};
 
-const char *interactive_mode[] = {
+const char *interactive_mode_banner[] = {
         "╔══════════════════════════════════════╗",
         "║      Interactive mode - Choose:      ║",
         "╠══════════════════════════════════════╣",
@@ -43,14 +43,14 @@ const char *interactive_mode[] = {
         "║                                      ║",
         "╚══════════════════════════════════════╝"
 };
-struct TextData interactiveMode = {interactive_mode, 12};
+struct textRows interactiveModeBanner = {interactive_mode_banner, 12};
 
 const char *ask_file_name[] = {
         "╔══════════════════════════════════════╗",
         "║ Type in the filename:                ║",
         "╚══════════════════════════════════════╝"
 };
-struct TextData askFileName = {ask_file_name, 3};
+struct textRows askFileName = {ask_file_name, 3};
 
 const char *values_menu[] = {
         "╔════════════════════════╦══════════════════╗",
@@ -81,4 +81,4 @@ const char *values_menu[] = {
         "║ y_delta_max            ║ "ANSI_COLOR_GREEN"0.00"ANSI_COLOR_RESET"             ║",
         "╚════════════════════════╩══════════════════╝"
 };
-struct TextData valuesMenu = {values_menu, 27};
+struct textRows valuesMenu = {values_menu, 27};

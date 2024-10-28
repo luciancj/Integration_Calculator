@@ -2,15 +2,15 @@
 #define USER_MENU_H
 
 extern const char *menu[];
-extern const char *parameter_mode[];
-extern const char *interactive_mode[];
+extern const char *parameter_mode_banner[];
+extern const char *interactive_mode_banner[];
 extern const char *ask_file_name[];
 extern const char *values_menu[];
 
-extern struct TextData userMenu;
-extern struct TextData parameterMode;
-extern struct TextData interactiveMode;
-extern struct TextData askFileName;
-extern struct TextData valuesMenu;
+extern struct textRows welcomeMenu;
+extern struct textRows parameterModeBanner;
+extern struct textRows interactiveModeBanner;
+extern struct textRows askFileName;
+extern struct textRows valuesMenu;
 
 #endif

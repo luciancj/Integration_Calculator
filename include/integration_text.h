@@ -9,12 +9,12 @@ extern const char *midpoint_riemann_sum[];
 extern const char *trapezoidal_rule[];
 extern const char *secant_method[];
 
-extern struct TextData printIntegrationCalculator;
-extern struct TextData printRegulaFalsi;
-extern struct TextData printRightRiemannSum;
-extern struct TextData printLeftRiemannSum;
-extern struct TextData printMidpointRiemannSum;
-extern struct TextData printTrapezoidalRule;
-extern struct TextData printSecantMethod;
+extern struct textRows printIntegrationBanner;
+extern struct textRows printRegulaFalsi;
+extern struct textRows printRightRiemannSum;
+extern struct textRows printLeftRiemannSum;
+extern struct textRows printMidpointRiemannSum;
+extern struct textRows printTrapezoidalRule;
+extern struct textRows printSecantMethod;
 
 #endif

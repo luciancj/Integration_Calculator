@@ -73,6 +73,12 @@ build CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o: C_COMPILER__In
   OBJECT_DIR = CMakeFiles/Integration_Calculator.dir
   OBJECT_FILE_DIR = CMakeFiles/Integration_Calculator.dir/src
 
+build CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o: C_COMPILER__Integration_Calculator_unscanned_Debug /Users/luciancojocaru/Desktop/Integration$ Calculator/src/text_utils.c || cmake_object_order_depends_target_Integration_Calculator
+  DEP_FILE = CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Integration_Calculator.dir
+  OBJECT_FILE_DIR = CMakeFiles/Integration_Calculator.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Integration_Calculator
@@ -81,7 +87,7 @@ build CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o: C_COMPILER__In
 #############################################
 # Link the executable Integration_Calculator
 
-build Integration_Calculator: C_EXECUTABLE_LINKER__Integration_Calculator_Debug CMakeFiles/Integration_Calculator.dir/main.c.o CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o
+build Integration_Calculator: C_EXECUTABLE_LINKER__Integration_Calculator_Debug CMakeFiles/Integration_Calculator.dir/main.c.o CMakeFiles/Integration_Calculator.dir/src/menu_text.c.o CMakeFiles/Integration_Calculator.dir/src/integration_text.c.o CMakeFiles/Integration_Calculator.dir/src/menu_manager.c.o CMakeFiles/Integration_Calculator.dir/src/text_utils.c.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/Integration_Calculator.dir
   POST_BUILD = :
