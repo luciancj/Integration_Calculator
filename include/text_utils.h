@@ -13,6 +13,10 @@ struct textRows {
     int numRows;
 };
 
+/**
+ * Function to print each row of text from a textRows structure.
+ * The textRows structure contains multiple rows of strings.
+ */
 void printStringRow(struct textRows data);
 
 /**

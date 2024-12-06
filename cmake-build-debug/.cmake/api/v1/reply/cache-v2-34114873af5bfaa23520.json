@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/luciancojocaru/Desktop/Coding/Integration Calculator/cmake-build-debug"
+			"value" : "/Users/luciancojocaru/CLionProjects/Integration-Calculator/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -383,7 +383,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/luciancojocaru/Desktop/Coding/Integration Calculator/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/luciancojocaru/CLionProjects/Integration-Calculator/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -395,7 +395,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Ninja"
+			"value" : "Unix Makefiles"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -443,7 +443,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/luciancojocaru/Desktop/Coding/Integration Calculator"
+			"value" : "/Users/luciancojocaru/CLionProjects/Integration-Calculator"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -494,12 +494,16 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Path to a program."
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : "/Users/luciancojocaru/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja"
+			"type" : "FILEPATH",
+			"value" : "/usr/bin/make"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1031,7 +1035,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/luciancojocaru/Desktop/Coding/Integration Calculator/cmake-build-debug"
+			"value" : "/Users/luciancojocaru/CLionProjects/Integration-Calculator/cmake-build-debug"
 		},
 		{
 			"name" : "Integration_Calculator_IS_TOP_LEVEL",
@@ -1055,7 +1059,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/luciancojocaru/Desktop/Coding/Integration Calculator"
+			"value" : "/Users/luciancojocaru/CLionProjects/Integration-Calculator"
 		}
 	],
 	"kind" : "cache",

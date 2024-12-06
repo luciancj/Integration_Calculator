@@ -1,9 +1,6 @@
-
-#include "include/menu_manager.h"
+#include "main.h"
 
 int main() {
-    // Display the welcome message and handle the initial user input
     userInterface();
-
     return 0;
 }

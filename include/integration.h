@@ -1,27 +1,69 @@
-/*
 #ifndef INTEGRATION_H
 #define INTEGRATION_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+#include "../include/parser.h"
 #include <math.h>
-#include <ctype.h>
+#include <stdio.h>
 
-// Original code with expression parsing and evaluation
-#include "../include/parser.h" // Assume the original code is in "evaluating_expression.h"
+/**
+ * Implements the Regula Falsi (False Position) method to find a root of the equation represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The starting point of the interval.
+ * @param b The ending point of the interval.
+ * @param tol The tolerance level for root estimation.
+ * @return The estimated root within the given tolerance.
+ */
+double regulaFalsi(const Node* root, double a, double b, double tol);
 
-// Function Prototypes for Integration Methods
-double regulaFalsi(Node* root, double a, double b, double tol);
-double rightRiemannSum(Node* root, double a, double b, int n);
-double leftRiemannSum(Node* root, double a, double b, int n);
-double midpointRiemannSum(Node* root, double a, double b, int n);
-double trapezoidalRule(Node* root, double a, double b, int n);
-double secantMethod(Node* root, double x0, double x1, double tol);
+/**
+ * Calculates the Right Riemann Sum for the function represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The starting point of the interval.
+ * @param b The ending point of the interval.
+ * @param n The number of subintervals.
+ * @return The approximate integral of the function over the interval [a, b].
+ */
+double rightRiemannSum(const Node* root, double a, double b, int n);
 
-// Function to evaluate a Node for a specific x value (originally from expression parser)
-extern double evaluate(Node *node, double x);
-extern Node* parseExpression(char** expr);
+/**
+ * Calculates the Left Riemann Sum for the function represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The starting point of the interval.
+ * @param b The ending point of the interval.
+ * @param n The number of subintervals.
+ * @return The approximate integral of the function over the interval [a, b].
+ */
+double leftRiemannSum(const Node* root, double a, double b, int n);
 
-#endif // INTEGRATION_H
-*/
+/**
+ * Calculates the Midpoint Riemann Sum for the function represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The starting point of the interval.
+ * @param b The ending point of the interval.
+ * @param n The number of subintervals.
+ * @return The approximate integral of the function over the interval [a, b].
+ */
+double midpointRiemannSum(const Node* root, double a, double b, int n);
+
+/**
+ * Calculates the Trapezoidal Rule for the function represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The starting point of the interval.
+ * @param b The ending point of the interval.
+ * @param n The number of subintervals.
+ * @return The approximate integral of the function over the interval [a, b].
+ */
+double trapezoidalRule(const Node* root, double a, double b, int n);
+
+/**
+ * Implements the Secant Method to find a root of the equation represented by the parse tree.
+ * @param root The root of the parse tree representing the function.
+ * @param a The first initial guess.
+ * @param b The second initial guess.
+ * @param tol The tolerance level for root estimation.
+ * @return The estimated root within the given tolerance.
+ */
+double secantMethod(const Node* root, double a, double b, double tol);
+
+#endif

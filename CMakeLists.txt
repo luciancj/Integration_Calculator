@@ -11,4 +11,8 @@ add_executable(Integration_Calculator
         src/text_utils.c
         src/parser.c
         src/integration.c
-        include/integration.h)
+        include/integration.h
+        include/parser.h
+        src/user_input.c
+        include/user_input.h
+        main.h)

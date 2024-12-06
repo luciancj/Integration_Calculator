@@ -1,25 +1,20 @@
-/*
 #include "../include/parser.h"
 
-// Function Prototypes
-Node* newNumberNode(double number);
-Node* newVariableNode(char variable);
-Node* newOperatorNode(char operator, Node* left, Node* right);
-Node* newFunctionNode(char* function, Node* child);
-double evaluate(Node *node, double x);
-Node* parseExpression(char** expr);
-Node* parseFactor(char** expr);
-Node* parseTerm(char** expr);
-Node* parseExponent(char** expr);
-Node* parseFunction(char** expr);
-void skipWhitespace(char** expr);
+void freeNode(Node* node) {
+    if (node == NULL) {
+        return;
+    }
 
-// Function to create a new node for a number
+    freeNode(node->left);
+    freeNode(node->right);
+    free(node);
+}
+
 Node* newNumberNode(double number) {
     Node *node = (Node*)malloc(sizeof(Node));
     if (!node) {
-        printf("Memory allocation error for number node.\n");
-        exit(1);
+        fprintf(stderr, "Memory allocation error for number node.\n");
+        exit(EXIT_FAILURE);
     }
     node->type = NUMBER;
     node->data.number = number;
@@ -27,12 +22,11 @@ Node* newNumberNode(double number) {
     return node;
 }
 
-// Function to create a new node for a variable
 Node* newVariableNode(char variable) {
     Node *node = (Node*)malloc(sizeof(Node));
     if (!node) {
-        printf("Memory allocation error for variable node.\n");
-        exit(1);
+        fprintf(stderr, "Memory allocation error for variable node.\n");
+        exit(EXIT_FAILURE);
     }
     node->type = VARIABLE;
     node->data.variable = variable;
@@ -40,12 +34,11 @@ Node* newVariableNode(char variable) {
     return node;
 }
 
-// Function to create a new node for an operator
 Node* newOperatorNode(char operator, Node* left, Node* right) {
     Node *node = (Node*)malloc(sizeof(Node));
     if (!node) {
-        printf("Memory allocation error for operator node.\n");
-        exit(1);
+        fprintf(stderr, "Memory allocation error for operator node.\n");
+        exit(EXIT_FAILURE);
     }
     node->type = OPERATOR;
     node->data.operator = operator;
@@ -54,131 +47,149 @@ Node* newOperatorNode(char operator, Node* left, Node* right) {
     return node;
 }
 
-// Function to create a new node for a function like sin, cos, etc.
-Node* newFunctionNode(char* function, Node* child) {
+Node* newFunctionNode(const char* function, Node* child) {
     Node *node = (Node*)malloc(sizeof(Node));
     if (!node) {
-        printf("Memory allocation error for function node.\n");
-        exit(1);
+        fprintf(stderr, "Memory allocation error for function node.\n");
+        exit(EXIT_FAILURE);
     }
     node->type = FUNCTION;
-    strcpy(node->data.function, function);
+    strncpy(node->data.function, function, sizeof(node->data.function) - 1);
+    node->data.function[sizeof(node->data.function) - 1] = '\0';
     node->left = child;
     node->right = NULL;
     return node;
 }
 
-// Function to skip whitespace
 void skipWhitespace(char** expr) {
     while (**expr == ' ' || **expr == '\t') {
         (*expr)++;
     }
 }
 
-// Recursive function to evaluate the expression tree
-double evaluate(Node *node, double x) {
+double evaluate(const Node *node, double x) {
     if (node == NULL) {
-        printf("Error: Null node encountered during evaluation.\n");
-        exit(1);
+        fprintf(stderr, "Error: Null node encountered during evaluation.\n");
+        exit(EXIT_FAILURE);
     }
-    if (node->type == NUMBER) {
-        return node->data.number;
-    }
-    if (node->type == VARIABLE) {
-        return x; // Substitute x with the given value
-    }
-    if (node->type == OPERATOR) {
-        double leftVal = evaluate(node->left, x);
-        double rightVal = evaluate(node->right, x);
-        switch (node->data.operator) {
-            case '+': return leftVal + rightVal;
-            case '-': return leftVal - rightVal;
-            case '*': return leftVal * rightVal;
-            case '/': return rightVal != 0 ? leftVal / rightVal : 0;
-            case '^': return pow(leftVal, rightVal); // For exponents
+
+    switch (node->type) {
+        case NUMBER:
+            return node->data.number;
+        case VARIABLE:
+            return x;
+        case OPERATOR: {
+            double leftVal = evaluate(node->left, x);
+            double rightVal = evaluate(node->right, x);
+            switch (node->data.operator) {
+                case '+': return leftVal + rightVal;
+                case '-': return leftVal - rightVal;
+                case '*': return leftVal * rightVal;
+                case '/':
+                    if (rightVal != 0)
+                        return leftVal / rightVal;
+                    else {
+                        fprintf(stderr, "Error: Division by zero.\n");
+                        exit(EXIT_FAILURE);
+                    }
+                case '^': return pow(leftVal, rightVal);
+                default:
+                    fprintf(stderr, "Error: Unknown operator '%c'.\n", node->data.operator);
+                    exit(EXIT_FAILURE);
+            }
         }
+        case FUNCTION: {
+            double childVal = evaluate(node->left, x);
+            if (strcmp(node->data.function, "sin") == 0) return sin(childVal);
+            if (strcmp(node->data.function, "cos") == 0) return cos(childVal);
+            if (strcmp(node->data.function, "tan") == 0) return tan(childVal);
+            if (strcmp(node->data.function, "log") == 0) {
+                if (childVal > 0)
+                    return log(childVal);
+                else {
+                    fprintf(stderr, "Error: Logarithm of a non-positive number.\n");
+                    exit(EXIT_FAILURE);
+                }
+            }
+            fprintf(stderr, "Error: Unknown function '%s'.\n", node->data.function);
+            exit(EXIT_FAILURE);
+        }
+        default:
+            fprintf(stderr, "Error: Unknown node type '%d'.\n", node->type);
+            exit(EXIT_FAILURE);
     }
-    if (node->type == FUNCTION) {
-        double childVal = evaluate(node->left, x);
-        if (strcmp(node->data.function, "sin") == 0) return sin(childVal);
-        if (strcmp(node->data.function, "cos") == 0) return cos(childVal);
-        if (strcmp(node->data.function, "tan") == 0) return tan(childVal);
-        if (strcmp(node->data.function, "log") == 0) return childVal > 0 ? log(childVal) : 0;
-    }
-    return 0; // Error case
 }
 
-// Function to parse a number (handles 'e' as Euler's Number)
 Node* parseNumber(char** expr) {
     skipWhitespace(expr);
     if (**expr == 'e') {
-        (*expr)++; // Move past 'e'
-        return newNumberNode(M_E); // Euler's number
-    } else {
-        char* end;
-        double number = strtod(*expr, &end);
-        *expr = end; // Move the pointer to the end of the number
-        return newNumberNode(number);
+        (*expr)++;
+        return newNumberNode(M_E);
     }
+    char* end;
+    double number = strtod(*expr, &end);
+    if (*expr == end) {
+        fprintf(stderr, "Error: Invalid number format.\n");
+        exit(EXIT_FAILURE);
+    }
+    *expr = end;
+    return newNumberNode(number);
 }
 
-// Function to parse a variable (assumes only 'x' as variable)
 Node* parseVariable(char** expr) {
     skipWhitespace(expr);
-    (*expr)++; // Move past 'x'
-    return newVariableNode('x');
+    if (**expr == 'x') {
+        (*expr)++;
+        return newVariableNode('x');
+    }
+    fprintf(stderr, "Error: Unknown variable.\n");
+    exit(EXIT_FAILURE);
 }
 
-// Function to parse a function like sin, cos, etc.
 Node* parseFunction(char** expr) {
     skipWhitespace(expr);
-    char func[10];
+    char func[16] = {0};
     int i = 0;
 
-    // Extract the function name (e.g., "sin", "cos")
-    while (isalpha(**expr)) {
+    while (isalpha(**expr) && i < sizeof(func) - 1) {
         func[i++] = *(*expr)++;
     }
-    func[i] = '\0'; // Null-terminate function name
+    func[i] = '\0';
 
     if (**expr != '(') {
-        printf("Error: Missing '(' after function name '%s'.\n", func);
-        exit(1);
+        fprintf(stderr, "Error: Missing '(' after function name '%s'.\n", func);
+        exit(EXIT_FAILURE);
     }
 
-    (*expr)++; // Skip the opening '('
+    (*expr)++;
     skipWhitespace(expr);
 
     Node* child = parseExpression(expr);
 
     if (**expr != ')') {
-        printf("Error: Missing ')' after function argument for '%s'.\n", func);
-        exit(1);
+        fprintf(stderr, "Error: Missing ')' after function argument for '%s'.\n", func);
+        exit(EXIT_FAILURE);
     }
-
-    (*expr)++; // Skip the closing ')'
+    (*expr)++;
     return newFunctionNode(func, child);
 }
 
-// Function to parse parentheses (handles nested expressions)
 Node* parseParentheses(char** expr) {
     skipWhitespace(expr);
     if (**expr != '(') {
-        printf("Error: Expected '(' at the beginning of parentheses.\n");
-        exit(1);
+        fprintf(stderr, "Error: Expected '(' at the beginning of parentheses.\n");
+        exit(EXIT_FAILURE);
     }
-    (*expr)++; // Skip '('
-    skipWhitespace(expr);
+    (*expr)++;
     Node* node = parseExpression(expr);
     if (**expr != ')') {
-        printf("Error: Missing ')' at the end of parentheses.\n");
-        exit(1);
+        fprintf(stderr, "Error: Missing ')' at the end of parentheses.\n");
+        exit(EXIT_FAILURE);
     }
-    (*expr)++; // Skip ')'
+    (*expr)++;
     return node;
 }
 
-// Function to parse factors (numbers, variables, functions, or nested expressions)
 Node* parseFactor(char** expr) {
     skipWhitespace(expr);
     if (isdigit(**expr) || **expr == 'e') {
@@ -190,61 +201,39 @@ Node* parseFactor(char** expr) {
     } else if (**expr == '(') {
         return parseParentheses(expr);
     } else if (**expr == '-') {
-        (*expr)++; // Skip '-'
+        (*expr)++;
         return newOperatorNode('*', newNumberNode(-1), parseFactor(expr));
     }
-    printf("Error: Unexpected character '%c' in expression.\n", **expr);
-    exit(1);
+    fprintf(stderr, "Error: Unexpected character '%c' in expression.\n", **expr);
+    exit(EXIT_FAILURE);
 }
 
-// Function to parse exponents (handles '^' operator with right associativity)
 Node* parseExponent(char** expr) {
-    skipWhitespace(expr);
     Node* left = parseFactor(expr);
-    while (1) {
-        skipWhitespace(expr);
-        if (**expr == '^') {
-            char op = *(*expr)++;
-            Node* right = parseExponent(expr); // Recursive call for right-associativity
-            left = newOperatorNode(op, left, right);
-        } else {
-            break;
-        }
+    while (**expr == '^') {
+        char op = *(*expr)++;
+        Node* right = parseExponent(expr);
+        left = newOperatorNode(op, left, right);
     }
     return left;
 }
 
-// Function to parse terms (factors combined by '*' or '/')
 Node* parseTerm(char** expr) {
-    skipWhitespace(expr);
     Node* left = parseExponent(expr);
-    while (1) {
-        skipWhitespace(expr);
-        if (**expr == '*' || **expr == '/') {
-            char op = *(*expr)++;
-            Node* right = parseExponent(expr);
-            left = newOperatorNode(op, left, right);
-        } else {
-            break;
-        }
+    while (**expr == '*' || **expr == '/') {
+        char op = *(*expr)++;
+        Node* right = parseExponent(expr);
+        left = newOperatorNode(op, left, right);
     }
     return left;
 }
 
-// Function to parse expressions (terms combined by '+' or '-')
 Node* parseExpression(char** expr) {
-    skipWhitespace(expr);
     Node* left = parseTerm(expr);
-    while (1) {
-        skipWhitespace(expr);
-        if (**expr == '+' || **expr == '-') {
-            char op = *(*expr)++;
-            Node* right = parseTerm(expr);
-            left = newOperatorNode(op, left, right);
-        } else {
-            break;
-        }
+    while (**expr == '+' || **expr == '-') {
+        char op = *(*expr)++;
+        Node* right = parseTerm(expr);
+        left = newOperatorNode(op, left, right);
     }
     return left;
 }
-*/
