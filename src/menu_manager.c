@@ -100,7 +100,7 @@ void parameterMenu() {
     }
 
     // After askFileNameBanner: Read from "input.csv" and write to "output.txt"
-    char fileName[256] = "input.csv";
+    char fileName[256] = "../input.csv";
     FILE *file = fopen(fileName, "r");
     if (file == NULL) {
         printf("Error: Could not open file %s\n", fileName);
@@ -123,7 +123,7 @@ void parameterMenu() {
     fclose(file);
 
     // Create an output file "output.txt" and write success message
-    FILE *outputFile = fopen("output.txt", "w");
+    FILE *outputFile = fopen("../output.txt", "w");
     if (outputFile != NULL) {
         fprintf(outputFile, "File successfully read\n");
         fclose(outputFile);
