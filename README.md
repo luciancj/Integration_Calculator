@@ -7,7 +7,7 @@ The goal of the Integration Calculator is to develop a menu-driven C program for
 The integration calculator program is designed to provide an easy-to-use interface for users to perform numerical integration on a wide range of functions. The program is menu-driven and offers two main modes: Interactive mode and Parameter mode. Let's dive into the details of these modes and their functionality.
 
 <p align="center">
-  <img width="326" alt="welcomeMenu" src="https://github.com/user-attachments/assets/2baf0271-d726-473b-bd36-ddad920feca9">
+  <img width="326" alt="welcomeMenu" src="assets/welcomeMenu.png">
 </p>
 
 **Note:** The input functions are expected to be in **Reverse Polish Notation** (RPN).
@@ -16,7 +16,7 @@ The integration calculator program is designed to provide an easy-to-use interfa
 Interactive mode is designed for users who want to interactively input functions and integration parameters. Users can choose from the following integration methods:
 
 <p align="center">
-  <img width="325" alt="interactiveMode" src="https://github.com/user-attachments/assets/35c8ce73-18b9-4a66-962e-33cb3b2758a1">
+  <img width="325" alt="interactiveMode" src="assets/interactiveMode.png">
 </p>
 
 Each of these integration methods can be selected by entering the corresponding command, such as "/rf" for Regula falsi. In this mode, the program will prompt the user for the function and integration parameters, and it will calculate and display the result.
@@ -25,7 +25,7 @@ Each of these integration methods can be selected by entering the corresponding 
 Parameter mode is intended for users who prefer to input multiple functions and parameters in one go. Users can choose from the same integration methods as in Interactive mode. This mode is suitable for performing integration on multiple functions sequentially.
 
 <p align="center">
-    <img width="330" alt="parameterMode" src="https://github.com/user-attachments/assets/22cf614a-4593-428e-aa29-67fe3ec93890">
+    <img width="330" alt="parameterMode" src="assets/parameterMode.png">
 </p>
 <! <p align="center">
   <! -- <img width="314" alt="SCR-20231102-lhhb" src="https://github.com/luciancj/Integration-calculator/assets/72004477/5b9850f4-3192-4c1c-af25-f805569d83c3">
@@ -36,7 +36,7 @@ Parameter mode is intended for users who prefer to input multiple functions and 
 The program provides clear and structured output, guiding the user through the integration process. It uses a combination of text-based menus, instructions, and colorful text to enhance the user experience. For example, green text is used to highlight important information in the menus.
 
 <p align="center">
-  <img width="371" alt="valuesMenu" src="https://github.com/user-attachments/assets/22de3649-c483-474e-8375-3cf8ba8593f8">
+  <img width="371" alt="valuesMenu" src="assets/valuesMenu.png">
 </p>
 
 ## How to Use:
